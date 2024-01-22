@@ -1,3 +1,4 @@
+<!--suppress ALL -->
 <script setup>
 
 </script>
@@ -20,12 +21,11 @@
 
       <el-collapse v-model="activeName" accordion>
         <el-collapse-item title="聊天设置" name="chat">
-
           <el-container class="settings-container">
             <el-main>
               <div class="settings-item-first">
                 <div class="settings-text">消息反撤回</div>
-                <el-switch v-model="interceptRecall" />
+                <el-switch v-model="interceptRecall" :disabled="settingDisableMap.get('intercept_recall')" />
               </div>
               <div class="settings-item">
                 <div class="settings-text">简化气泡字体</div>
@@ -74,16 +74,23 @@
         </el-collapse-item>
 
         <el-collapse-item title="个人设置" name="self">
-          <el-table v-loading="loading" style="width: 100%">
-          <div>
-            Operation feedback: enable the users to clearly perceive their
-            operations by style updates and interactive effects;
-          </div>
-          <div>
-            Visual feedback: reflect current state by updating or rearranging
-            elements of the page.
-          </div>
-          </el-table>
+          <el-container class="settings-container">
+            <el-main>
+              <div class="settings-item-first">
+                <div class="settings-text">主页侧边栏简化</div>
+                <el-switch v-model="simplifyHomepageSidebar" :disabled="settingDisableMap.get('simplify_homepage_sidebar')" />
+              </div>
+
+              <div class="settings-item">
+                <div class="settings-text">禁止自动更新检查</div>
+                <el-switch v-model="disableUpdateCheck" :disabled="settingDisableMap.get('disable_update_check')" />
+              </div>
+
+              <div class="settings-subtext">
+                禁止QQ获取更新消息，检查当前版本是否为最新版本。
+              </div>
+            </el-main>
+          </el-container>
         </el-collapse-item>
 
         <el-collapse-item title="群聊设置" name="group">
@@ -127,13 +134,30 @@ import { ref, reactive, toRefs, watch } from 'vue'
 /**
  * 聊天设置
  */
-const interceptRecall = ref(false) // 反撤回
+const interceptRecall = ref(false)
+
+/**
+ * 个人设置
+ */
+const simplifyHomepageSidebar = ref(false)
+const disableUpdateCheck = ref(false)
 
 const activeName = ref('')
 const loading = ref(true)
 const status = ref("unknown");
 const version = ref("unknown");
 const moduleVersion = ref("unknown");
+
+let settingMap = new Map([
+  ["intercept_recall", interceptRecall],
+  ["simplify_homepage_sidebar", simplifyHomepageSidebar],
+  ["disable_update_check", disableUpdateCheck],
+])
+let settingDisableMap = reactive(new Map([
+  ["intercept_recall", false],
+  ["simplify_homepage_sidebar", false],
+  ["disable_update_check", false],
+]))
 
 if (typeof qwq === "undefined") {
   alert('QwQ bridge is not loaded')
@@ -143,11 +167,21 @@ if (typeof qwq === "undefined") {
   version.value = qwq.getQQVersion()
   status.value = qwq.getStatus()
   moduleVersion.value = qwq.getModuleVersion()
-  interceptRecall.value = qwq.mmkvGetValueBoolean('intercept_recall')
 
-  watch(interceptRecall, async (newValue) => {
-    qwq.mmkvSetValueBoolean('intercept_recall', newValue)
-  })
+  for (let [key, ref] of settingMap) {
+    let settingJsonStr = qwq.getSetting(key)
+    let setting = JSON.parse(settingJsonStr)
+    let failed = setting.failed
+    let value = setting.value
+
+
+    // 如果failed为true，说明该方法无效，附加disable参数
+    settingDisableMap.set(key, failed)
+    ref.value = value
+    watch(ref, async (newValue) => {
+      qwq.setSetting(key, newValue)
+    })
+  }
 }
 
 </script>
