@@ -20,7 +20,6 @@
 
       <el-collapse v-model="activeName" accordion>
         <el-collapse-item title="聊天设置" name="chat">
-
           <el-container class="settings-container">
             <el-main>
               <div class="settings-item-first">
@@ -74,16 +73,23 @@
         </el-collapse-item>
 
         <el-collapse-item title="个人设置" name="self">
-          <el-table v-loading="loading" style="width: 100%">
-          <div>
-            Operation feedback: enable the users to clearly perceive their
-            operations by style updates and interactive effects;
-          </div>
-          <div>
-            Visual feedback: reflect current state by updating or rearranging
-            elements of the page.
-          </div>
-          </el-table>
+          <el-container class="settings-container">
+            <el-main>
+              <div class="settings-item-first">
+                <div class="settings-text">主页侧边栏简化</div>
+                <el-switch v-model="simplifyHomepageSidebar" />
+              </div>
+
+              <div class="settings-item">
+                <div class="settings-text">禁止自动更新检查</div>
+                <el-switch v-model="disableUpdateCheck" />
+              </div>
+
+              <div class="settings-subtext">
+                禁止QQ获取更新消息，检查当前版本是否为最新版本。
+              </div>
+            </el-main>
+          </el-container>
         </el-collapse-item>
 
         <el-collapse-item title="群聊设置" name="group">
@@ -127,13 +133,25 @@ import { ref, reactive, toRefs, watch } from 'vue'
 /**
  * 聊天设置
  */
-const interceptRecall = ref(false) // 反撤回
+const interceptRecall = ref(false)
+
+/**
+ * 个人设置
+ */
+const simplifyHomepageSidebar = ref(false)
+const disableUpdateCheck = ref(false)
 
 const activeName = ref('')
 const loading = ref(true)
 const status = ref("unknown");
 const version = ref("unknown");
 const moduleVersion = ref("unknown");
+
+let settingMMKVMap = new Map([
+  ["intercept_recall", interceptRecall],
+  ["simplify_homepage_sidebar", simplifyHomepageSidebar],
+  ["disable_update_check", disableUpdateCheck],
+]);
 
 if (typeof qwq === "undefined") {
   alert('QwQ bridge is not loaded')
@@ -143,11 +161,13 @@ if (typeof qwq === "undefined") {
   version.value = qwq.getQQVersion()
   status.value = qwq.getStatus()
   moduleVersion.value = qwq.getModuleVersion()
-  interceptRecall.value = qwq.mmkvGetValueBoolean('intercept_recall')
 
-  watch(interceptRecall, async (newValue) => {
-    qwq.mmkvSetValueBoolean('intercept_recall', newValue)
-  })
+  for (let [key, ref] of settingMMKVMap) {
+    ref.value = qwq.mmkvGetValueBoolean(key)
+    watch(ref, async (newValue) => {
+      qwq.mmkvSetValueBoolean(key, newValue)
+    })
+  }
 }
 
 </script>
