@@ -89,6 +89,15 @@
               <div class="settings-subtext">
                 禁止QQ获取更新消息，检查当前版本是否为最新版本。
               </div>
+
+              <div class="settings-item">
+                <div class="settings-text">一键点赞20次</div>
+                <el-switch v-model="oneClickLike" :disabled="settingDisableMap.get('one_click_like')" />
+              </div>
+
+              <div class="settings-subtext">
+                协议层点赞加强，不生成没什么鸟用的动画。
+              </div>
             </el-main>
           </el-container>
         </el-collapse-item>
@@ -143,6 +152,7 @@ const interceptRecall = ref(false)
  */
 const simplifyHomepageSidebar = ref(false)
 const disableUpdateCheck = ref(false)
+const oneClickLike = ref(false)
 
 
 /**
@@ -162,14 +172,16 @@ let settingMap = new Map([
   ["simplify_homepage_sidebar", simplifyHomepageSidebar],
   ["disable_update_check", disableUpdateCheck],
   ["disable_hot_update_so_by_traffic", disableHotUpdateSoByTraffic],
-  ["disable_useless_packet", disableUselessPacket]
+  ["disable_useless_packet", disableUselessPacket],
+  ["one_click_like", oneClickLike]
 ])
 let settingDisableMap = reactive(new Map([
   ["intercept_recall", false],
   ["simplify_homepage_sidebar", false],
   ["disable_update_check", false],
   ["disable_hot_update_so_by_traffic", false],
-  ["disable_useless_packet", false]
+  ["disable_useless_packet", false],
+  ["one_click_like", false]
 ]))
 
 if (typeof qwq === "undefined") {
