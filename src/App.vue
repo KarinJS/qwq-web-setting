@@ -110,17 +110,19 @@
         </el-collapse-item>
 
         <el-collapse-item title="实验功能" name="lab">
-          <el-table v-loading="loading" style="width: 100%">
-          <div>
-            Decision making: giving advices about operations is acceptable, but do
-            not make decisions for the users;
+          <div class="settings-item-first">
+            <div class="settings-text">禁止使用流量热更新SO文件</div>
+            <el-switch v-model="disableHotUpdateSoByTraffic" :disabled="settingDisableMap.get('disable_hot_update_so_by_traffic')" />
           </div>
-          <div>
-            Controlled consequences: users should be granted the freedom to
-            operate, including canceling, aborting or terminating current
-            operation.
+
+          <div class="settings-item">
+            <div class="settings-text">拦截QQ无用发包</div>
+            <el-switch v-model="disableUselessPacket" :disabled="settingDisableMap.get('disable_useless_packet')" />
           </div>
-          </el-table>
+
+          <div class="settings-subtext">
+            禁止QQ发送没什么鸟用的网络包占用网络资源，同时该功能会的开启会自动开启主题修复。
+          </div>
         </el-collapse-item>
       </el-collapse>
 
@@ -142,6 +144,13 @@ const interceptRecall = ref(false)
 const simplifyHomepageSidebar = ref(false)
 const disableUpdateCheck = ref(false)
 
+
+/**
+ * 实验功能
+ */
+const disableHotUpdateSoByTraffic = ref(false)
+const disableUselessPacket = ref(false)
+
 const activeName = ref('')
 const loading = ref(true)
 const status = ref("unknown");
@@ -152,11 +161,15 @@ let settingMap = new Map([
   ["intercept_recall", interceptRecall],
   ["simplify_homepage_sidebar", simplifyHomepageSidebar],
   ["disable_update_check", disableUpdateCheck],
+  ["disable_hot_update_so_by_traffic", disableHotUpdateSoByTraffic],
+  ["disable_useless_packet", disableUselessPacket]
 ])
 let settingDisableMap = reactive(new Map([
   ["intercept_recall", false],
   ["simplify_homepage_sidebar", false],
   ["disable_update_check", false],
+  ["disable_hot_update_so_by_traffic", false],
+  ["disable_useless_packet", false]
 ]))
 
 if (typeof qwq === "undefined") {
