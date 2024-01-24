@@ -29,7 +29,7 @@
               </div>
               <div class="settings-item">
                 <div class="settings-text">简化气泡字体</div>
-                <el-switch disabled />
+                <el-switch v-model="simplifyBubbleFont" :disabled="settingDisableMap.get('simplify_bubble_font')" />
               </div>
 
               <div class="settings-subtext">
@@ -38,37 +38,18 @@
 
               <div class="settings-item">
                 <div class="settings-text">简洁圆头像</div>
-                <el-switch disabled />
+                <el-switch v-model="simplifyBubbleAvatar" :disabled="settingDisableMap.get('simplify_bubble_avatar')" />
               </div>
 
               <div class="settings-item">
-                <div class="settings-text">屏蔽入群动画</div>
-                <el-switch disabled />
-              </div>
-
-              <div class="settings-item">
-                <div class="settings-text">群文件增强</div>
-                <el-switch disabled />
+                <div class="settings-text">复读机 +1</div>
+                <el-switch v-model="repeatMessage" :disabled="settingDisableMap.get('repeat_message')" />
               </div>
 
               <div class="settings-subtext">
-                允许自定义文件夹或文件名称，挪动文件到指定文件夹，上传应用自动重命名，下载应用去除<el-text class="mx-1" type="primary">.1</el-text>后缀。
+                人类的本质不就是个复读机吗？（大声）
               </div>
 
-
-              <div class="settings-item">
-                <div class="settings-text">显示群禁言操作者</div>
-                <el-switch disabled />
-              </div>
-
-              <div class="settings-item">
-                <div class="settings-text">艾特群成员列表排序优化</div>
-                <el-switch disabled />
-              </div>
-
-              <div class="settings-subtext">
-                使得艾特群成员时，群成员列表按照群主/管理员优选的方式排序。
-              </div>
             </el-main>
           </el-container>
         </el-collapse-item>
@@ -108,19 +89,33 @@
         </el-collapse-item>
 
         <el-collapse-item title="群聊设置" name="group">
-          <el-table v-loading="loading" style="width: 100%">
-          <div>
-            Simplify the process: keep operating process simple and intuitive;
+          <div class="settings-item">
+            <div class="settings-text">屏蔽入群动画</div>
+            <el-switch disabled />
           </div>
-          <div>
-            Definite and clear: enunciate your intentions clearly so that the
-            users can quickly understand and make decisions;
+
+          <div class="settings-item">
+            <div class="settings-text">群文件增强</div>
+            <el-switch disabled />
           </div>
-          <div>
-            Easy to identify: the interface should be straightforward, which helps
-            the users to identify and frees them from memorizing and recalling.
+
+          <div class="settings-subtext">
+            允许自定义文件夹或文件名称，挪动文件到指定文件夹，上传应用自动重命名，下载应用去除<el-text class="mx-1" type="primary">.1</el-text>后缀。
           </div>
-          </el-table>
+
+          <div class="settings-item">
+            <div class="settings-text">显示群禁言操作者</div>
+            <el-switch disabled />
+          </div>
+
+          <div class="settings-item">
+            <div class="settings-text">艾特群成员列表排序优化</div>
+            <el-switch disabled />
+          </div>
+
+          <div class="settings-subtext">
+            使得艾特群成员时，群成员列表按照群主/管理员优选的方式排序。
+          </div>
         </el-collapse-item>
 
         <el-collapse-item title="实验功能" name="lab">
@@ -151,6 +146,9 @@ import { ref, reactive, toRefs, watch } from 'vue'
  * 聊天设置
  */
 const interceptRecall = ref(false)
+const simplifyBubbleFont = ref(false)
+const simplifyBubbleAvatar = ref(false)
+const repeatMessage = ref(false)
 
 /**
  * 个人设置
@@ -179,7 +177,10 @@ let settingMap = new Map([
   ["disable_hot_update_so_by_traffic", disableHotUpdateSoByTraffic],
   ["disable_useless_packet", disableUselessPacket],
   ["one_click_like", oneClickLike],
-  ["force_tablet_mode", forceTabletMode]
+  ["force_tablet_mode", forceTabletMode],
+  ["simplify_bubble_font", simplifyBubbleFont],
+  ["simplify_bubble_avatar", simplifyBubbleAvatar],
+  ["repeat_message", repeatMessage]
 ])
 let settingDisableMap = reactive(new Map([
   ["intercept_recall", false],
@@ -188,7 +189,10 @@ let settingDisableMap = reactive(new Map([
   ["disable_hot_update_so_by_traffic", false],
   ["disable_useless_packet", false],
   ["one_click_like", false],
-  ["force_tablet_mode", false]
+  ["force_tablet_mode", false],
+  ["simplify_bubble_font", false],
+  ["simplify_bubble_avatar", false],
+  ["repeat_message", false]
 ]))
 
 if (typeof qwq === "undefined") {
