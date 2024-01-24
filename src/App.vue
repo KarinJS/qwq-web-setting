@@ -95,8 +95,13 @@
                 <el-switch v-model="oneClickLike" :disabled="settingDisableMap.get('one_click_like')" />
               </div>
 
+              <div class="settings-item">
+                <div class="settings-text">强制平板模式登录</div>
+                <el-switch v-model="forceTabletMode" :disabled="settingDisableMap.get('force_tablet_mode')" />
+              </div>
+
               <div class="settings-subtext">
-                协议层点赞加强，不生成没什么鸟用的动画。
+                实现两台安卓手机设备共存登录，解放生产力。
               </div>
             </el-main>
           </el-container>
@@ -153,7 +158,7 @@ const interceptRecall = ref(false)
 const simplifyHomepageSidebar = ref(false)
 const disableUpdateCheck = ref(false)
 const oneClickLike = ref(false)
-
+const forceTabletMode = ref(false)
 
 /**
  * 实验功能
@@ -173,7 +178,8 @@ let settingMap = new Map([
   ["disable_update_check", disableUpdateCheck],
   ["disable_hot_update_so_by_traffic", disableHotUpdateSoByTraffic],
   ["disable_useless_packet", disableUselessPacket],
-  ["one_click_like", oneClickLike]
+  ["one_click_like", oneClickLike],
+  ["force_tablet_mode", forceTabletMode]
 ])
 let settingDisableMap = reactive(new Map([
   ["intercept_recall", false],
@@ -181,7 +187,8 @@ let settingDisableMap = reactive(new Map([
   ["disable_update_check", false],
   ["disable_hot_update_so_by_traffic", false],
   ["disable_useless_packet", false],
-  ["one_click_like", false]
+  ["one_click_like", false],
+  ["force_tablet_mode", false]
 ]))
 
 if (typeof qwq === "undefined") {
