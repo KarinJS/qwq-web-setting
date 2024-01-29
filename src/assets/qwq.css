@@ -1,0 +1,28 @@
+.settings-text {
+    margin-left: 5px; /* 或者根据需要调整 */
+    margin-right: 5px;
+}
+
+.settings-item-first {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 0px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #f0f0f0; /* Adjust the color to match the design */
+}
+
+.settings-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #f0f0f0; /* Adjust the color to match the design */
+}
+
+.settings-subtext {
+    color: #999; /* Adjust the color to match the design */
+    font-size: 0.8rem; /* Adjust the font size as needed */
+    margin-top: 5px; /* Adjust the margin as needed */
+}
