@@ -37,7 +37,8 @@ const version = ref("unknown");
 const moduleVersion = ref("unknown");
 
 if (typeof qwq === "undefined") {
-  alert('QwQ bridge is not loaded')
+  // alert('QwQ bridge is not loaded')
+  window.location.href = "https://im.qq.com";
 } else {
   qwq.toast('QwQ模块载入成功')
   loading.value = false
