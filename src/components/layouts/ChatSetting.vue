@@ -28,6 +28,11 @@
         </div>
 
         <div class="settings-item">
+          <div class="settings-text">允许群聊闪照消息</div>
+          <el-switch v-model="allowGroupFlashPic" :disabled="settingDisableMap.get('allow_group_flash_pic')" />
+        </div>
+
+        <div class="settings-item">
           <div class="settings-text">复读机 +1</div>
           <el-switch v-model="repeatMessage" :disabled="settingDisableMap.get('repeat_message')" />
         </div>
@@ -52,6 +57,7 @@ const simplifyBubbleFont = ref(false)
 const simplifyBubbleAvatar = ref(false)
 const repeatMessage = ref(false)
 const disableFlashPicture = ref(false)
+const allowGroupFlashPic = ref(false)
 
 let settingMap = new Map([
   ["intercept_recall", interceptRecall],
@@ -59,6 +65,7 @@ let settingMap = new Map([
   ["simplify_bubble_avatar", simplifyBubbleAvatar],
   ["repeat_message", repeatMessage],
   ["disable_flash_picture", disableFlashPicture],
+  ["allow_group_flash_pic", allowGroupFlashPic],
 ])
 
 let settingDisableMap = reactive(new Map([
@@ -67,6 +74,7 @@ let settingDisableMap = reactive(new Map([
   ["simplify_bubble_avatar", false],
   ["repeat_message", false],
   ["disable_flash_picture", false],
+  ["allow_group_flash_pic", false],
 ]))
 
 if (typeof qwq !== "undefined") {
