@@ -36,6 +36,7 @@
 
 <script setup lang="ts">
 import { ref, reactive, watch } from 'vue'
+import {ElMessage} from "element-plus";
 
 /**
  * 个人设置
@@ -68,6 +69,10 @@ if (typeof qwq !== "undefined") {
     settingDisableMap.set(key, failed)
     ref.value = value
     watch(ref, async (newValue) => {
+      ElMessage({
+        message: `修改成功，重启QQ生效`,
+        type: 'success',
+      });
       qwq.setSetting(key, newValue)
     })
   }

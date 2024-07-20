@@ -2,29 +2,31 @@
 <template>
   <div class="qwq-main">
     <el-tabs class="qwq-tabs" v-model="activeName" @tab-click="handleClick">
-      <el-tab-pane label="状态" name="status">
-        <el-descriptions
-            title="QwQ状态"
-            direction="horizontal"
-            :column="1"
-            border>
-          <el-descriptions-item label="运行模式">
-            <el-tag >{{status}}</el-tag>
-          </el-descriptions-item>
-          <el-descriptions-item label="应用版本" > {{version}} </el-descriptions-item>
-          <el-descriptions-item label="模块版本">{{moduleVersion}}</el-descriptions-item>
-        </el-descriptions>
+      <div class="qwq-tabs-contents">
+        <el-tab-pane label="状态" name="status">
+          <el-descriptions
+              title="QwQ状态"
+              direction="horizontal"
+              :column="1"
+              border>
+            <el-descriptions-item label="运行模式">
+              <el-tag >{{status}}</el-tag>
+            </el-descriptions-item>
+            <el-descriptions-item label="应用版本" > {{version}} </el-descriptions-item>
+            <el-descriptions-item label="模块版本">{{moduleVersion}}</el-descriptions-item>
+          </el-descriptions>
 
-        <el-scrollbar >
+          <el-scrollbar >
 
-        </el-scrollbar>
+          </el-scrollbar>
 
-      </el-tab-pane>
-      <el-tab-pane label="聊天设置" name="chat"><ChatSetting /></el-tab-pane>
-      <el-tab-pane label="消息设置" name="message"><MessageSetting /></el-tab-pane>
-      <el-tab-pane label="群聊设置" name="group"><GroupSetting /></el-tab-pane>
-      <el-tab-pane label="个人设置" name="me"><SettingMe /></el-tab-pane>
-      <el-tab-pane label="实验室" name="lab"><LabSetting /></el-tab-pane>
+        </el-tab-pane>
+        <el-tab-pane label="聊天设置" name="chat"><ChatSetting /></el-tab-pane>
+        <el-tab-pane label="消息设置" name="message"><MessageSetting /></el-tab-pane>
+        <el-tab-pane label="群聊设置" name="group"><GroupSetting /></el-tab-pane>
+        <el-tab-pane label="个人设置" name="me"><SettingMe /></el-tab-pane>
+        <el-tab-pane label="实验室" name="lab"><LabSetting /></el-tab-pane>
+      </div>
     </el-tabs>
   </div>
 </template>
@@ -71,10 +73,12 @@ if (typeof qwq === "undefined") {
 .qwq-main {
   position: fixed;
   top: 0;
-  left: 0;
+  left: 0px;
   width: 100vw;
   height: 100vh;
   overflow: hidden;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .qwq-tabs {
@@ -83,10 +87,12 @@ if (typeof qwq === "undefined") {
   flex-direction: column;
 }
 
+.qwq-tabs-contents {
+  margin: 0 2%;
+}
+
 .el-tabs__content {
   flex: 1;
   overflow: auto;
 }
-
-
 </style>
