@@ -5,7 +5,7 @@
     <el-main>
 
       <div class="settings-item-first">
-        <div class="settings-text">消息小尾巴</div>
+        <div class="settings-text">小尾巴</div>
         <el-form :model="form" ref="form">
           <el-form-item>
             <el-col :span="18">

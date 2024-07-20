@@ -1,7 +1,7 @@
 <!--suppress ALL -->
 <template>
   <div class="qwq-main">
-    <el-tabs class="qwq-tabs" v-model="activeName" type="border-card" @tab-click="handleClick">
+    <el-tabs class="qwq-tabs" v-model="activeName" @tab-click="handleClick">
       <el-tab-pane label="状态" name="status">
         <el-descriptions
             title="QwQ状态"
