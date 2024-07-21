@@ -7,13 +7,16 @@
   </div>
 
   <div class="settings-item">
-    <div class="settings-text">群文件增强</div>
-    <el-switch v-model="superGroupFile" :disabled="settingDisableMap.get('super_group_file')" />
-  </div>
-
-  <!--    <div class="settings-subtext">
+    <el-col>
+      <el-row class="settings-row">
+        <div class="settings-text">群文件增强</div>
+        <el-switch v-model="superGroupFile" :disabled="settingDisableMap.get('super_group_file')" />
+      </el-row>
+      <div class="settings-subtext">
         允许自定义文件夹或文件名称，挪动文件到指定文件夹，上传应用自动重命名，下载应用去除<el-text class="mx-1" type="primary">.1</el-text>后缀。
-      </div>-->
+      </div>
+    </el-col>
+  </div>
 
   <div class="settings-item">
     <div class="settings-text">显示群禁言操作者</div>
@@ -21,13 +24,17 @@
   </div>
 
   <div class="settings-item">
-    <div class="settings-text">艾特群成员列表排序优化</div>
-    <el-switch v-model="optimizeAtSort" :disabled="settingDisableMap.get('optimize_at_sort')" />
+    <el-col>
+      <el-row class="settings-row">
+        <div class="settings-text">艾特群成员列表排序优化</div>
+        <el-switch v-model="optimizeAtSort" :disabled="settingDisableMap.get('optimize_at_sort')" />
+      </el-row>
+      <div class="settings-subtext">
+        使得艾特群成员时，群成员列表按照群主/管理员优选的方式排序。
+      </div>
+    </el-col>
   </div>
 
-  <!--    <div class="settings-subtext">
-        使得艾特群成员时，群成员列表按照群主/管理员优选的方式排序。
-      </div>-->
 </template>
 
 <script setup lang="ts">

@@ -7,7 +7,7 @@ const moduleVersion = ref("unknown");
 const loading = ref(true)
 
 if (typeof qwq === "undefined") {
-  window.location.href = "https://im.qq.com";
+  //window.location.href = "https://im.qq.com";
 } else {
   qwq.toast('QwQ模块载入成功')
   loading.value = false

@@ -1,6 +1,4 @@
 .settings-text {
-    margin-left: 5px; /* 或者根据需要调整 */
-    margin-right: 5px;
 }
 
 .settings-item-first {
@@ -19,6 +17,12 @@
     padding-top: 10px;
     padding-bottom: 10px;
     border-bottom: 1px solid #f0f0f0; /* Adjust the color to match the design */
+}
+
+.settings-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .settings-subtext {

@@ -13,21 +13,26 @@
           :label="tab.label"
           :name="tab.name"
       ></el-tab-pane>
-  </el-tabs>
-
+    </el-tabs>
+    <!--    <el-watermark
+            :content="['QwQ学习交流', '禁止外传']"
+            style="height: 100%;"
+        >-->
     <swiper
         class="qwq-swiper"
         :slides-per-view="1"
         @swiper="onSwiper"
         @slideChange="onSlideChange">
-        <swiper-slide v-for="tab in tabs" :key="tab.name">
-          <div class="qwq-swiper-contents">
-            <component :is="tab.content" />
-          </div>
-        </swiper-slide>
+      <swiper-slide v-for="tab in tabs" :key="tab.name">
+        <div class="qwq-swiper-contents">
+          <component :is="tab.content" />
+        </div>
+      </swiper-slide>
     </swiper>
+    <!--      </el-watermark>-->
   </div>
 </template>
+
 
 <script setup lang="ts">
 import ChatSetting from "@/components/layouts/ChatSetting.vue";
@@ -87,6 +92,7 @@ const onSlideChange = () => {
   overflow: auto;
   padding-left: 10px;
   padding-right: 10px;
+  background-color: rgba(0, 0, 0, 0);
 }
 
 .qwq-tabs {
@@ -97,6 +103,7 @@ const onSlideChange = () => {
 
 .qwq-swiper {
   height: 100%;
+  background-color: rgba(0, 0, 0, 0);
 }
 
 .qwq-swiper-contents {

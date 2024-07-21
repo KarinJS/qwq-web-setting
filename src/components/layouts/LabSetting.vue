@@ -7,13 +7,16 @@
   </div>
 
   <div class="settings-item">
-    <div class="settings-text">拦截QQ无用发包</div>
-    <el-switch v-model="disableUselessPacket" :disabled="settingDisableMap.get('disable_useless_packet')" />
-  </div>
-
-  <!--    <div class="settings-subtext">
+    <el-col>
+      <el-row class="settings-row">
+        <div class="settings-text">拦截QQ无用发包</div>
+        <el-switch v-model="disableUselessPacket" :disabled="settingDisableMap.get('disable_useless_packet')" />
+      </el-row>
+      <div class="settings-subtext">
         禁止QQ发送没什么鸟用的网络包占用网络资源，同时该功能会的开启会自动开启主题修复。
-      </div>-->
+      </div>
+    </el-col>
+  </div>
 </template>
 
 <script setup lang="ts">

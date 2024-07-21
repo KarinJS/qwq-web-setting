@@ -5,17 +5,10 @@
     <el-main>
 
       <div class="settings-item-first">
-        <div class="settings-text">小尾巴</div>
-        <el-form :model="form" ref="form">
-          <el-form-item>
-            <el-col :span="18">
-              <el-input v-model="form.settingValue" placeholder="Enter your setting"></el-input>
-            </el-col>
-            <el-col :span="6">
-              <el-button type="primary" @click="saveSetting">Save</el-button>
-            </el-col>
-          </el-form-item>
-        </el-form>
+        <el-col>
+          <div class="settings-text">小尾巴</div>
+          <div class="settings-text">小尾巴</div>
+        </el-col>
       </div>
 
     </el-main>
