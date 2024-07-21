@@ -126,4 +126,8 @@ const onSlideChange = () => {
   flex: none;
   overflow: auto;
 }
+
+.settings-container {
+  margin-top: 0;
+}
 </style>

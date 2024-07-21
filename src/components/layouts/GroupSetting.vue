@@ -34,7 +34,6 @@
       </div>
     </el-col>
   </div>
-
 </template>
 
 <script setup lang="ts">

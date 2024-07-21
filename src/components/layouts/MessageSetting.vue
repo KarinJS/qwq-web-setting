@@ -1,35 +1,25 @@
 <!--suppress ALL -->
 
 <template>
-  <el-container class="settings-container">
-    <el-main>
-
-      <div class="settings-item-first">
-        <el-col>
-          <div class="settings-text">小尾巴</div>
-          <div class="settings-text">小尾巴</div>
-        </el-col>
-      </div>
-
-    </el-main>
-  </el-container>
+  <div class="settings-item-first">
+    <div class="settings-text">小尾巴</div>
+    <el-row class="nickname-item" @click="showDialog = true">
+      <el-col :span="20">
+        <span>QwQ</span>
+      </el-col>
+      <el-col :span="4" class="arrow">
+        <el-icon><arrow-right /></el-icon>
+      </el-col>
+    </el-row>
+  </div>
 </template>
 
 <script setup lang="ts">
 import { ref, reactive, toRefs, watch } from 'vue'
+import { ArrowRight } from '@element-plus/icons-vue'
 import { ElMessage } from 'element-plus';
 
-const form = ref({
-  settingValue: '',
-});
-
-const saveSetting = () => {
-  ElMessage({
-    message: `Setting saved: ${form.value.settingValue}`,
-    type: 'success',
-  });
-  // 这里可以添加保存设置的逻辑，例如发送请求到服务器
-};
+const showDialog = ref(false)
 
 /**
  * 消息设置
@@ -64,12 +54,19 @@ if (typeof qwq !== "undefined") {
 }
 </script>
 
-<style>
-@import "@/assets/qwq.css";
-</style>
-
-
 <style scoped>
+.nickname-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.arrow {
+  text-align: right;
+}
+
 .el-form {
   max-width: 400px;
 }

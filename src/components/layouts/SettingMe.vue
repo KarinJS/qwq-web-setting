@@ -1,44 +1,40 @@
 <!--suppress ALL -->
 
 <template>
-  <el-container class="settings-container">
-    <el-main>
-      <div class="settings-item-first">
-        <div class="settings-text">主页侧边栏简化</div>
-        <el-switch v-model="simplifyHomepageSidebar" :disabled="settingDisableMap.get('simplify_homepage_sidebar')" />
-      </div>
+  <div class="settings-item-first">
+    <div class="settings-text">主页侧边栏简化</div>
+    <el-switch v-model="simplifyHomepageSidebar" :disabled="settingDisableMap.get('simplify_homepage_sidebar')" />
+  </div>
 
-      <div class="settings-item">
-        <el-col>
-          <el-row class="settings-row">
-            <div class="settings-text">禁止自动更新检查</div>
-            <el-switch v-model="disableUpdateCheck" :disabled="settingDisableMap.get('disable_update_check')" />
-          </el-row>
-          <div class="settings-subtext">
-            禁止QQ获取更新消息，检查当前版本是否为最新版本。
-          </div>
-        </el-col>
+  <div class="settings-item">
+    <el-col>
+      <el-row class="settings-row">
+        <div class="settings-text">禁止自动更新检查</div>
+        <el-switch v-model="disableUpdateCheck" :disabled="settingDisableMap.get('disable_update_check')" />
+      </el-row>
+      <div class="settings-subtext">
+        禁止QQ获取更新消息，检查当前版本是否为最新版本。
       </div>
+    </el-col>
+  </div>
 
-      <div class="settings-item">
-        <div class="settings-text">一键点赞20次</div>
-        <el-switch v-model="oneClickLike" :disabled="settingDisableMap.get('one_click_like')" />
-      </div>
+  <div class="settings-item">
+    <div class="settings-text">一键点赞20次</div>
+    <el-switch v-model="oneClickLike" :disabled="settingDisableMap.get('one_click_like')" />
+  </div>
 
 
-      <div class="settings-item">
-        <el-col>
-          <el-row class="settings-row">
-            <div class="settings-text">强制平板模式登录</div>
-            <el-switch v-model="forceTabletMode" :disabled="settingDisableMap.get('force_tablet_mode')" />
-          </el-row>
-          <div class="settings-subtext">
-            实现两台安卓手机设备共存登录，解放生产力。
-          </div>
-        </el-col>
+  <div class="settings-item">
+    <el-col>
+      <el-row class="settings-row">
+        <div class="settings-text">强制平板模式登录</div>
+        <el-switch v-model="forceTabletMode" :disabled="settingDisableMap.get('force_tablet_mode')" />
+      </el-row>
+      <div class="settings-subtext">
+        实现两台安卓手机设备共存登录，解放生产力。
       </div>
-    </el-main>
-  </el-container>
+    </el-col>
+  </div>
 </template>
 
 <script setup lang="ts">
