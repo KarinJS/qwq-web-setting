@@ -32,7 +32,7 @@
       center
   >
     <span>
-      设置小尾巴，小尾巴将会在您每次发消息后自动插入到消息末尾，该操作可能会导致风控。
+      设置小尾巴，小尾巴将会在您每次发消息后自动插入到消息末尾，该操作可能会导致风控。(只支持纯文本)
     </span>
     <div>
       <strong>禁止使用小尾巴传播淫秽/色情/暴力/博彩等非法内容</strong>
@@ -109,7 +109,11 @@ if (typeof qwq !== "undefined") {
       ref.value = value
     }
     watch(ref, async (newValue) => {
-      qwq.setSetting(key, newValue)
+      if (typeof newValue === 'string') {
+        qwq.setSettingString(key, newValue)
+      } else {
+        qwq.setSetting(key, newValue)
+      }
     })
   }
 }
