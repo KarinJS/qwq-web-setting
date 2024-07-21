@@ -1,7 +1,7 @@
 <!--suppress ALL -->
 
 <template>
-  <div class="settings-item-first">
+  <div class="settings-item">
     <div class="settings-text">消息反撤回</div>
     <el-switch v-model="interceptRecall" :disabled="settingDisableMap.get('intercept_recall')" />
   </div>

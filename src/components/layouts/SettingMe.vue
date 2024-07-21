@@ -1,7 +1,7 @@
 <!--suppress ALL -->
 
 <template>
-  <div class="settings-item-first">
+  <div class="settings-item">
     <div class="settings-text">主页侧边栏简化</div>
     <el-switch v-model="simplifyHomepageSidebar" :disabled="settingDisableMap.get('simplify_homepage_sidebar')" />
   </div>

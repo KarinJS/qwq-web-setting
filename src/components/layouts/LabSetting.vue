@@ -1,7 +1,7 @@
 <!--suppress ALL -->
 
 <template>
-  <div class="settings-item-first">
+  <div class="settings-item">
     <div class="settings-text">禁止使用流量热更新SO文件</div>
     <el-switch v-model="disableHotUpdateSoByTraffic" :disabled="settingDisableMap.get('disable_hot_update_so_by_traffic')" />
   </div>
