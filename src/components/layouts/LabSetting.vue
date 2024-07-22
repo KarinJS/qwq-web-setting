@@ -49,7 +49,7 @@ if (typeof qwq !== "undefined") {
     ref.value = value
     watch(ref, async (newValue) => {
       ElMessage({
-        message: `修改成功，重启QQ生效`,
+        message: `重启QQ生效`,
         type: 'success',
       });
       qwq.setSetting(key, newValue)

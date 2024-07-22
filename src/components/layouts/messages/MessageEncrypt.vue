@@ -77,7 +77,7 @@ if (typeof qwq !== "undefined") {
       </el-row>
 
       <div class="settings-subtext">
-        消息将会通过此密钥加密抄送，保证消息安全性。
+        消息将会通过此密钥加密抄送，保证消息安全性。（不可用）
       </div>
     </el-col>
   </div>
