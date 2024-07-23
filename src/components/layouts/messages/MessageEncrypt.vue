@@ -25,6 +25,8 @@ const messageKeyTmp = ref('')
 watch(messageEncryptKey, (newValue, _) => {
   if (newValue.length > 0) {
     simpleMessageKey.value = "已设置"
+  } else {
+    simpleMessageKey.value = ""
   }
 })
 
@@ -77,7 +79,7 @@ if (typeof qwq !== "undefined") {
       </el-row>
 
       <div class="settings-subtext">
-        消息将会通过此密钥加密抄送，保证消息安全性。（不可用）
+        消息将会通过此密钥加密抄送，保证消息安全性。
       </div>
     </el-col>
   </div>
