@@ -41,6 +41,7 @@ import GroupSetting from "@/components/layouts/GroupSetting.vue";
 import MessageSetting from "@/components/layouts/MessageSetting.vue";
 import LabSetting from "@/components/layouts/LabSetting.vue";
 import StatusLayout from "@/components/layouts/StatusLayout.vue";
+import AutoSetting from "@/components/layouts/AutoSetting.vue";
 import { ref, reactive, toRefs, watch, onMounted } from 'vue'
 import { ElTabs, ElTabPane } from 'element-plus'
 import type { TabsPaneContext } from 'element-plus'
@@ -53,6 +54,7 @@ const tabs = ref([
   { label: '消息设置', name: 'message', content: MessageSetting },
   { label: '群聊设置', name: 'group', content: GroupSetting },
   { label: '个人设置', name: 'me', content: SettingMe },
+  { label: '自动分区', name: 'auto', content: AutoSetting },
   { label: '实验室', name: 'lab', content: LabSetting }
 ])
 
