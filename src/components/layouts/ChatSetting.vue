@@ -37,7 +37,7 @@
         <div class="settings-text">复读机 +1</div>
         <el-switch v-model="repeatMessage" :disabled="settingDisableMap.get('repeat_message')" />
       </el-row>
-      <div class="settings-subtext">让气泡和字体变成默认的，避免阴间气泡和阴间字体叠加使得文字难以看懂。</div>
+      <div class="settings-subtext">普普通通的加一复读机，是在消息旁边显示一个加一按钮。</div>
     </el-col>
   </div>
 </template>
