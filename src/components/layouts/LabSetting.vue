@@ -17,6 +17,17 @@
       </div>
     </el-col>
   </div>
+
+  <div class="settings-item">
+    <el-row class="settings-row">
+      <div class="settings-text">禁用QQ崩溃上报</div>
+      <el-switch v-model="disableHotUpdateSoByTraffic" :disabled="settingDisableMap.get('disable_qq_crash_report')" />
+    </el-row>
+    <div class="settings-subtext">
+      禁止QQ崩溃上报日志以及禁用崩溃后自杀（阻止闪退?）。
+    </div>
+  </div>
+
 </template>
 
 <script setup lang="ts">
@@ -28,14 +39,17 @@ import {ElMessage} from "element-plus";
  */
 const disableHotUpdateSoByTraffic = ref(false)
 const disableUselessPacket = ref(false)
+const disableQQCrashReport = ref(false)
 
 let settingMap = new Map([
   ["disable_hot_update_so_by_traffic", disableHotUpdateSoByTraffic],
   ["disable_useless_packet", disableUselessPacket],
+  ["disable_qq_crash_report", disableQQCrashReport],
 ])
 let settingDisableMap = reactive(new Map([
   ["disable_hot_update_so_by_traffic", false],
   ["disable_useless_packet", false],
+  ["disable_qq_crash_report", false],
 ]))
 
 if (typeof qwq !== "undefined") {
