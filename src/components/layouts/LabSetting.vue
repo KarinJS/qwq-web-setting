@@ -19,13 +19,15 @@
   </div>
 
   <div class="settings-item">
-    <el-row class="settings-row">
-      <div class="settings-text">禁用QQ崩溃上报</div>
-      <el-switch v-model="disableHotUpdateSoByTraffic" :disabled="settingDisableMap.get('disable_qq_crash_report')" />
-    </el-row>
-    <div class="settings-subtext">
-      禁止QQ崩溃上报日志以及禁用崩溃后自杀（阻止闪退?）。
-    </div>
+    <el-col>
+      <el-row class="settings-row">
+        <div class="settings-text">禁用QQ崩溃上报</div>
+        <el-switch v-model="disableHotUpdateSoByTraffic" :disabled="settingDisableMap.get('disable_qq_crash_report')" />
+      </el-row>
+      <div class="settings-subtext">
+        禁止QQ崩溃上报日志以及禁用崩溃后自杀（阻止闪退?）。
+      </div>
+    </el-col>
   </div>
 
 </template>
