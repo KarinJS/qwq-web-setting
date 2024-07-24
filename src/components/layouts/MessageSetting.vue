@@ -2,7 +2,7 @@
 
 <template>
   <MessageTail />
-  <MessageEncrypt />
+<!--  <MessageEncrypt />-->
 
 </template>
 
