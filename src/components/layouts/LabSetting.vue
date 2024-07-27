@@ -30,6 +30,18 @@
     </el-col>
   </div>
 
+  <div class="settings-item">
+    <el-col>
+      <el-row class="settings-row">
+        <div class="settings-text">禁用扫码授权检查</div>
+        <el-switch v-model="disableQRLoginCheck" :disabled="settingDisableMap.get('disable_qrlogin_check')" />
+      </el-row>
+      <div class="settings-subtext">
+        禁用后，使用相册或长按识别二维码时不再阻止扫码授权登录。
+      </div>
+    </el-col>
+  </div>
+
 </template>
 
 <script setup lang="ts">
@@ -42,16 +54,19 @@ import {ElMessage} from "element-plus";
 const disableHotUpdateSoByTraffic = ref(false)
 const disableUselessPacket = ref(false)
 const disableQQCrashReport = ref(false)
+const disableQRLoginCheck = ref(false)
 
 let settingMap = new Map([
   ["disable_hot_update_so_by_traffic", disableHotUpdateSoByTraffic],
   ["disable_useless_packet", disableUselessPacket],
   ["disable_qq_crash_report", disableQQCrashReport],
+  ["disable_qrlogin_check", disableQRLoginCheck],
 ])
 let settingDisableMap = reactive(new Map([
   ["disable_hot_update_so_by_traffic", false],
   ["disable_useless_packet", false],
   ["disable_qq_crash_report", false],
+  ["disable_qrlogin_check", false],
 ]))
 
 if (typeof qwq !== "undefined") {
