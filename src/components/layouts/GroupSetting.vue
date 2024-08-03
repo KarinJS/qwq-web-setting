@@ -34,6 +34,11 @@
       </div>
     </el-col>
   </div>
+
+  <div class="settings-item">
+    <div class="settings-text">禁用回复自动 @</div>
+    <el-switch v-model="disableReplyAt" :disabled="settingDisableMap.get('disable_reply_at')" />
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -47,19 +52,22 @@ const disableVisitGroupAnimation = ref(false)
 const superGroupFile = ref(false)
 const showBanOperator = ref(false)
 const optimizeAtSort = ref(false)
+const disableReplyAt = ref(false)
 
 let settingMap = new Map([
   ["disable_visit_group_animation", disableVisitGroupAnimation],
   ["super_group_file", superGroupFile],
   ["show_ban_operator", showBanOperator],
-  ["optimize_at_sort", optimizeAtSort]
+  ["optimize_at_sort", optimizeAtSort],
+  ["disable_reply_at", disableReplyAt]
 ])
 
 let settingDisableMap = reactive(new Map([
   ["disable_visit_group_animation", false],
   ["super_group_file", false],
   ["show_ban_operator", false],
-  ["optimize_at_sort", false]
+  ["optimize_at_sort", false],
+  ["disable_reply_at", false]
 ]))
 
 if (typeof qwq !== "undefined") {
