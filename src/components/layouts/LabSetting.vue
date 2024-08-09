@@ -42,6 +42,18 @@
     </el-col>
   </div>
 
+  <div class="settings-item">
+    <el-col>
+      <el-row class="settings-row">
+        <div class="settings-text">让复选框默认选中</div>
+        <el-switch v-model="checkBoxHook" :disabled="settingDisableMap.get('check_box_hook')" />
+      </el-row>
+      <div class="settings-subtext">
+        启用后，默认选中复选框（登录时或其他情况），避免用户手动勾选。(f**k QQ Agreement)
+      </div>
+    </el-col>
+  </div>
+
 </template>
 
 <script setup lang="ts">
@@ -55,18 +67,21 @@ const disableHotUpdateSoByTraffic = ref(false)
 const disableUselessPacket = ref(false)
 const disableQQCrashReport = ref(false)
 const disableQRLoginCheck = ref(false)
+const checkBoxHook = ref(false)
 
 let settingMap = new Map([
   ["disable_hot_update_so_by_traffic", disableHotUpdateSoByTraffic],
   ["disable_useless_packet", disableUselessPacket],
   ["disable_qq_crash_report", disableQQCrashReport],
   ["disable_qrlogin_check", disableQRLoginCheck],
+  ["check_box_hook", checkBoxHook]
 ])
 let settingDisableMap = reactive(new Map([
   ["disable_hot_update_so_by_traffic", false],
   ["disable_useless_packet", false],
   ["disable_qq_crash_report", false],
   ["disable_qrlogin_check", false],
+  ["check_box_hook", false]
 ]))
 
 if (typeof qwq !== "undefined") {
